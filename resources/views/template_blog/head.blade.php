@@ -7,6 +7,19 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
+	<meta name="description" content=""/> 
+
+	<meta property="og:title" content=""> 
+	<meta property="og:description" content=""> 
+	<meta property="og:image" content=""> 
+	<meta property="og:url" content=""> 
+
+
+	<meta property="twitter:title" content=""> 
+	<meta property="twitter:description" content=""> 
+	<meta property="twitter:image" content=""> 
+	<meta property="twitter:card" content=""> 
+
 	<title>Callie HTML Template</title>
 
 	<!-- Google font -->
@@ -58,8 +71,8 @@
 						<button class="aside-btn"><i class="fa fa-bars"></i></button>
 						<button class="search-btn"><i class="fa fa-search"></i></button>
 						<div id="nav-search">
-							<form>
-								<input class="input" name="search" placeholder="Enter your search...">
+							<form action="{{route('blog.cari')}}" method="get">
+								<input class="input" name="cari" placeholder="Enter your search...">
 							</form>
 							<button class="nav-close search-close">
 								<span></span>
@@ -76,22 +89,20 @@
 				<div class="container">
 					<!-- nav -->
 					<ul class="nav-menu">
+					<li><a href="{{ url('') }}">Beranda</a></li>
 						<li class="has-dropdown">
-							<a href="index.html">Home</a>
+							<a href="index.html">CATEGORY</a>
 							<div class="dropdown">
 								<div class="dropdown-body">
 									<ul class="dropdown-list">
-										<li><a href="category.html">Category page</a></li>
-										<li><a href="blog-post.html">Post page</a></li>
-										<li><a href="author.html">Author page</a></li>
-										<li><a href="about.html">About Us</a></li>
-										<li><a href="contact.html">Contacts</a></li>
-										<li><a href="blank.html">Regular</a></li>
+										@foreach($category_widget as $result1)
+										<li><a href="category.html">{{ $result1->name }}</a></li>
+										@endforeach
 									</ul>
 								</div>
 							</div>
 						</li>
-						<li><a href="#">Technology</a></li>
+						<li><a href="{{ route('blog.list')}}">List Post</a></li>
 						<li><a href="#">Health</a></li>
 						<li><a href="#">Travel</a></li>
 					</ul>
